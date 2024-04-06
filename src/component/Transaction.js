@@ -38,7 +38,12 @@ export const Transaction = ({ trans }) => {
             {/* Modal de confirmation de suppression */}
             <Modal show={show} onHide={handleClose}>
                 <Modal.Body className="text-center border shadow p-4">
-                    <h2>Êtes-vous sûr de vouloir supprimer cet élément ?</h2>
+                    <h2>Êtes-vous sûr de vouloir supprimer cette transaction ?</h2>
+                    <div className='container col-6 border bg-dark-subtle my-3'>
+                    <h5 className={'amount ' + (trans.amount < 0 ? 'minus' : 'plus')}>
+                        {trans.text} <span>{sign}${Math.abs(trans.amount)}</span>
+                    </h5>
+                    </div>
                     {/* Bouton pour confirmer la suppression */}
                     <button className="btn btn-primary" onClick={handleDelete}>Supprimer</button>
                 </Modal.Body>

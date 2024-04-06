@@ -16,15 +16,18 @@ export const AddTransaction = () => {
         e.preventDefault();
         let montantFinal;
         let idcheck = transactions.length + 1;
+        let checkId = trans => trans.id === idcheck;
         
         // Boucle pour générer un nouvel identifiant unique pour la transaction
-        while (transactions.some(trans => trans.id === idcheck)) {
+        while (transactions.some(checkId)) {
             idcheck++;
         }
 
+        console.log(transacType);
         // Calcul du montant final en fonction du type de transaction (entree ou depense)
         if(transacType==='depense') montantFinal= -Math.abs(montantIn);
         else montantFinal= +Math.abs(montantIn);
+
         
         // Création de la nouvelle transaction
         const newTrans = {
